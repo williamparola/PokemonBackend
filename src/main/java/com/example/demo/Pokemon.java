@@ -15,15 +15,15 @@ class Pokemon {
   // che è la chiave primaria
   //costurttore personalizzato?!?
   private String name;
-  private String role;
+  private String type;
   
   Pokemon() {}
   
   //tutti i metodi get e set di base
-  Pokemon(String name, String role) {
+  Pokemon(String name, String type) {
 
     this.name = name;
-    this.role = role;
+    this.type = type;
   }
 
   public Long getId() {
@@ -35,7 +35,7 @@ class Pokemon {
   }
 
   public String getRole() {
-    return this.role;
+    return this.type;
   }
 
   public void setId(Long id) {
@@ -46,8 +46,8 @@ class Pokemon {
     this.name = name;
   }
 
-  public void setRole(String role) {
-    this.role = role;
+  public void setRole(String type) {
+    this.type = type;
   }
 
   @Override
@@ -59,16 +59,16 @@ class Pokemon {
       return false;
     Pokemon pokemon = (Pokemon) o;
     return Objects.equals(this.id, pokemon.id) && Objects.equals(this.name, pokemon.name)
-        && Objects.equals(this.role, pokemon.role);
+        && Objects.equals(this.type, pokemon.type);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(this.id, this.name, this.role);
+    return Objects.hash(this.id, this.name, this.type);
   }// produce una sequenza di bit, detta digest, (o una stringa) strettamente correlata con i dati in ingresso.
 
   @Override
   public String toString() {
-    return "Pokemon{" + "id=" + this.id + ", name='" + this.name + '\'' + ", role='" + this.role + '\'' + '}';
+    return "Pokemon{" + "id=" + this.id + ", name='" + this.name + '\'' + ", type='" + this.type + '\'' + '}';
   }
 }

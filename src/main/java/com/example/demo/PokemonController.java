@@ -8,9 +8,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequestMapping("/api/pokemon")
 class PokemonController {
 
   private final PokemonRepository repository;
@@ -22,27 +24,29 @@ class PokemonController {
 
   // Aggregate root
   // tag::get-aggregate-root[]
-  @GetMapping("/pokemon")
+  //mappatura di tutti i pokemon presenti
+  @GetMapping("")
   List<Pokemon> all() {
     return repository.findAll();
   }
   // end::get-aggregate-root[]
 
-  @PostMapping("/pokemon")
+  @PostMapping("")
   Pokemon newPokemon(@RequestBody Pokemon newPokemon) {
     return repository.save(newPokemon);
   }
+  
 
   // Single item
-  
-  @GetMapping("/pokemon/{id}")
+  //mappatura di un singolo pokemon
+  @GetMapping("/{id}")
   Pokemon one(@PathVariable Long id) {
     
     return repository.findById(id)
       .orElseThrow(() -> new PokemonNotFoundException(id));
   }
 
-  @PutMapping("/pokemon/{id}")
+  @PutMapping("/{id}")
   Pokemon replacePokemon(@RequestBody Pokemon newPokemon, @PathVariable Long id) {
     
     return repository.findById(id)
@@ -57,7 +61,7 @@ class PokemonController {
       });
   }
 
-  @DeleteMapping("/pokemon/{id}")
+  @DeleteMapping("/{id}")
   void deletePokemon(@PathVariable Long id) {
     repository.deleteById(id);
   }
