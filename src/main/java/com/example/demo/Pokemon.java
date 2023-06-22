@@ -14,8 +14,8 @@ class Pokemon {
   // attributi dell'oggetto Employee, id ha + annotazioni jpa per indicare 
   // che è la chiave primaria
   //costurttore personalizzato?!?
-  private String name;
-  private String type;
+  public String name;
+  public String type;
   
   Pokemon() {}
   
